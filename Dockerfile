@@ -11,4 +11,4 @@ COPY . /app
 RUN chmod 777 /app/uploads
 EXPOSE 5000
 
-CMD [ "gunicorn", "--bind", "0.0.0.0:5000", "-w", "2" , "server:app"]
+CMD [ "gunicorn", "--bind", "0.0.0.0:5000", "-w", "2", "app:app" ]
