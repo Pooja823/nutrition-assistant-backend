@@ -3,8 +3,15 @@ import firebase_admin
 from firebase_admin import credentials, auth, storage
 
 
-cred = credentials.Certificate(os.path.abspath('./serviceAccount.json'))
-firebase_admin.initialize_app(cred)
+# Load Firebase credentials from environment variable
+firebase_credentials = os.getenv("FIREBASE_CREDENTIALS")
+
+if firebase_credentials:
+    cred = credentials.Certificate(json.loads(firebase_credentials))
+    firebase_admin.initialize_app(cred)
+else:
+    raise Exception("FIREBASE_CREDENTIALS not found in environment variables")
+
 bucket = storage.bucket('nutricheck-app.appspot.com')
 
 
