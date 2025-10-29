@@ -1,7 +1,7 @@
 import os
 import firebase_admin
 from firebase_admin import credentials, auth, storage
-
+import json
 
 # Load Firebase credentials from environment variable
 firebase_credentials = os.getenv("FIREBASE_CREDENTIALS")
